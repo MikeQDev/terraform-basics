@@ -13,6 +13,11 @@ resource "aws_instance" "myInstance" {
     ami = "ami-08962a4068733a2b6"
     instance_type = "t2.micro"
     security_groups = [ aws_security_group.webtraffic.name ]
+    count = 3 // Note: TF will catch issues such as attempting to apply EIP to a non-specific instances
+}
+
+output "instanceIds" {
+    value = [ aws_instance.myInstance.*.id ]
 }
 
 resource "aws_security_group" "webtraffic" {
