@@ -1,5 +1,5 @@
-variable "instanceNames" {
-  type = list(string)
+variable "instanceName" {
+  type = string
 }
 variable "instanceType" {
   type = string
@@ -13,9 +13,8 @@ variable "securityGroups" {
 resource "aws_instance" "ec2instasnce" {
   ami = "xyz"
   instance_type = var.instanceType
-  count = length(var.instanceNames)
   tags = {
-    "Name" = var.instanceNames[count.index]
+    "Name" = var.instanceName
   }
   security_groups = var.securityGroups
 }
