@@ -7,7 +7,8 @@ module "webModule" {
   source = "./ec2"
   instanceType = "t2.large"
   securityGroups = [module.sgModule.sgName]
-  instanceName = "webInstance"
+  instanceName = "webInstance-${count.index+1}}]" // Will produce webInstance-{1,2,3}
+  count = 3
 }
 
 module "dbModule" {
