@@ -7,12 +7,12 @@ module "webModule" {
   source = "./ec2"
   instanceType = "t2.large"
   securityGroups = [module.sgModule.sgName]
-  instanceName = "webInstance"
+  instanceNames = ["webInstanceA", "webInstanceB"]
 }
 
 module "dbModule" {
     source = "./ec2"   
-    instanceName = "dbInstance"
+    instanceNames = ["dbInstance"]
 }
 // move this inside ec2 
 module "sgModule" {
