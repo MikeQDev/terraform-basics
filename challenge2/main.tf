@@ -26,6 +26,7 @@ resource "aws_instance" "webServer" {
     "Name" = "webServer"
   }
   security_groups = [ aws_security_group.httpSecurityGroup.name ]
+  depends_on = [aws_instance.dbServer]
 }
 
 resource "aws_eip" "elasticIp" {
